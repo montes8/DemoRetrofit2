@@ -1,8 +1,10 @@
 package com.example.eddymontesinos.demoretrofit2.view
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import android.widget.Toast
 import com.example.eddymontesinos.demoretrofit2.R
 import com.example.eddymontesinos.demoretrofit2.adapter.ListaProductoAdapter
@@ -20,9 +22,32 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
         ajusteToolbarHome()
 
+        recyclerViewHome()
+
+
+    }
+
+    private fun ajusteToolbarHome() {
+        setSupportActionBar(homeToolbar)
+        title = "LISTA PRODUCTOS"
+    }
+
+    private fun recyclerViewHome(){
+
         productoAdapter = ListaProductoAdapter()
+
+
+        productoAdapter?.onDetalleProductoClick ={
+
+            val intent = Intent(this@HomeActivity,DetalleProductoActivity::class.java)
+            intent.putExtra(DetalleProductoActivity.PRODUCTO_PARAM, it)
+            startActivity(intent)
+        }
+
+
         my_recyclerview.layoutManager = LinearLayoutManager(this)
         my_recyclerview.adapter = productoAdapter
         //LLAMAMOS AL SERVICI WEB
@@ -31,8 +56,11 @@ class HomeActivity : AppCompatActivity() {
         listaCallback.enqueue(object : Callback<ArrayList<Producto>>{
             override fun onResponse(call: Call<ArrayList<Producto>>?, response: Response<ArrayList<Producto>>?) {
                 if (response?.code() == 200) {
-                    val listaproducto = response?.body()
 
+                    my_recyclerview.visibility = View.VISIBLE
+                    pgCargando.visibility = View.GONE
+
+                    val listaproducto = response?.body()
                     if (listaproducto != null) {
                         productoAdapter!!.addList(listaproducto)
                     }
@@ -48,8 +76,5 @@ class HomeActivity : AppCompatActivity() {
         })
     }
 
-    private fun ajusteToolbarHome() {
-        setSupportActionBar(homeToolbar)
-        title = "LISTA PRODUCTOS"
-    }
+
 }

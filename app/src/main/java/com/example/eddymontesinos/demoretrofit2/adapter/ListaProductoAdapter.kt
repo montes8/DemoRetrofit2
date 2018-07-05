@@ -8,7 +8,7 @@ import com.example.eddymontesinos.demoretrofit2.R
 import com.example.eddymontesinos.demoretrofit2.model.Producto
 import kotlinx.android.synthetic.main.molde_lista_productos.view.*
 
-class ListaProductoAdapter : RecyclerView.Adapter<ListaProductoAdapter.ProductoViewHolder>() {
+class ListaProductoAdapter(var onDetalleProductoClick: ((Producto) -> Unit)? = null) : RecyclerView.Adapter<ListaProductoAdapter.ProductoViewHolder>() {
 
     private var productos : List<Producto>? = null
 
@@ -36,7 +36,7 @@ class ListaProductoAdapter : RecyclerView.Adapter<ListaProductoAdapter.ProductoV
         holder.precioproducto.text = "$/ "+producto.precio.toString()
         holder.itemView.setOnClickListener{
 
-
+               onDetalleProductoClick?.invoke(producto)
         }
 
     }

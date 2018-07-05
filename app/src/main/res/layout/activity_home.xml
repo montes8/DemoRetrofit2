@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -21,9 +21,17 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/my_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="511dp"
+        android:layout_below="@+id/homeToolbar"
+        android:scrollbars="vertical"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
         tools:itemCount="5"
-        tools:listitem="@layout/molde_lista_productos"
-        />
+        tools:listitem="@layout/molde_lista_productos" />
 
- </LinearLayout>
+    <ProgressBar
+        android:id="@+id/pgCargando"
+        android:layout_width="50dp"
+        android:layout_centerInParent="true"
+        android:layout_height="50dp" />
+
+ </RelativeLayout>

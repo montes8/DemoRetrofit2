@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".view.DetalleProductoActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/detalleToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#03A9F4"
+        android:elevation="4dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:titleTextColor="#FFFFFF" />
 
 
     <LinearLayout
@@ -15,25 +24,20 @@
         android:paddingBottom="@dimen/detail_view_magnitude_layout_bottom_padding"
         android:paddingLeft="@dimen/detail_view_layout_horizontal_padding"
         android:paddingRight="@dimen/detail_view_layout_horizontal_padding"
+        android:layout_marginTop="50dp"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/eq_detail_magnitude"
-            android:layout_width="wrap_content"
+            android:id="@+id/nombre_producto_detalle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/detail_view_magnitude_text_size"
-            android:layout_gravity="bottom"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:textStyle="bold"
             android:textColor="@color/colorPrimaryDark"
             tools:text="6.6"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/detail_view_richter_text_size"
-            android:text="richter"
-            android:layout_gravity="bottom"
 
-            android:id="@+id/textView"/>
     </LinearLayout>
 
     <LinearLayout
@@ -49,7 +53,6 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/detail_activity_icon_right_margin"
             android:layout_marginEnd="@dimen/detail_activity_icon_right_margin"
-
             android:layout_gravity="center_vertical"/>
 
         <LinearLayout
@@ -67,14 +70,16 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="longitude"/>
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold"
+                    android:text="Stock :"/>
 
                 <TextView
-                    android:id="@+id/eq_detail_longitude"
+                    android:id="@+id/stock_detalle_producto"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    tools:text="longitude"/>
+                    tools:text="stock"/>
 
             </LinearLayout>
 
@@ -89,21 +94,23 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="latitude"/>
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="Lote :"/>
 
                 <TextView
-                    android:id="@+id/eq_detail_latitude"
+                    android:id="@+id/lote_producto_detalle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    tools:text="latitude"/>
+                    tools:text="lote"/>
             </LinearLayout>
 
             <View
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="@dimen/detail_activity_view_height"
                 android:layout_marginTop="@dimen/detail_activity_view_margin_top"
-                android:background="#000000"/>
+                android:background="#03A9F4"/>
 
         </LinearLayout>
     </LinearLayout>
@@ -129,7 +136,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/eq_detail_place"
+                android:id="@+id/precio_producto_detalle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="97 Km S of Wonosari, Indonesia"
@@ -137,10 +144,10 @@
                 android:paddingBottom="@dimen/detail_activity_vertical_padding"/>
 
             <View
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="@dimen/detail_activity_view_height"
                 android:layout_marginTop="@dimen/detail_activity_view_margin_top"
-                android:background="#000000"/>
+                android:background="#00BCD4"/>
 
         </LinearLayout>
     </LinearLayout>
@@ -166,7 +173,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/eq_detail_date_time"
+                android:id="@+id/detalle_producto_detalle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="17 de Noviembre - 16:29-37"
@@ -174,12 +181,35 @@
                 android:paddingBottom="@dimen/detail_activity_vertical_padding"/>
 
             <View
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="@dimen/detail_activity_view_height"
                 android:layout_marginTop="@dimen/detail_activity_view_margin_top"
-                android:background="#000000"/>
+                android:background="#00BCD4"/>
 
         </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="actualizar"
+        android:ems="7"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="7"
+        android:layout_marginLeft="30dp"
+        android:text="eliminar" />
+
     </LinearLayout>
 
 </LinearLayout>
