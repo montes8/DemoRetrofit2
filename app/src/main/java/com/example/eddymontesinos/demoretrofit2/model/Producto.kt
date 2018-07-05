@@ -1,4 +1,4 @@
-package com.example.eddymontesinos.demoretrofit2
+package com.example.eddymontesinos.demoretrofit2.model
 
 class Producto (val id: Int? = null,
                 val nombre: String,
