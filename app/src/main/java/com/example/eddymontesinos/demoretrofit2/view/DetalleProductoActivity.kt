@@ -1,5 +1,6 @@
 package com.example.eddymontesinos.demoretrofit2.view
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
@@ -17,6 +18,7 @@ class DetalleProductoActivity : AppCompatActivity() {
 
     companion object {
         const val PRODUCTO_PARAM = "producto"
+        const val PRODCUTO_ACTULIZAR = "productoactulizar"
     }
 
 
@@ -55,11 +57,18 @@ class DetalleProductoActivity : AppCompatActivity() {
             })
 
             dialogBuilder.setNegativeButton("NO",{dialog, which ->
-                
+
             })
 
            dialogBuilder.show()
 
+        }
+
+        button_actualizar.setOnClickListener{
+
+            val intent = Intent(this@DetalleProductoActivity,FormularioProductoActivity::class.java)
+            intent.putExtra(PRODCUTO_ACTULIZAR,detallesProducto)
+            startActivity(intent)
         }
 
     }

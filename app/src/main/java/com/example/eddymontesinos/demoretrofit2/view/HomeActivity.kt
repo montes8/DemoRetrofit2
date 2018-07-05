@@ -13,6 +13,7 @@ import com.example.eddymontesinos.demoretrofit2.adapter.ListaProductoAdapter
 import com.example.eddymontesinos.demoretrofit2.api.ProductoService
 import com.example.eddymontesinos.demoretrofit2.model.Producto
 import kotlinx.android.synthetic.main.activity_home.*
+import org.jetbrains.anko.startActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -92,7 +93,7 @@ class HomeActivity : AppCompatActivity() {
         when(item.itemId){
 
             R.id.option_agregar ->{
-                startActivity()
+                startActivity<FormularioProductoActivity>()
             }
 
         }

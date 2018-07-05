@@ -10,7 +10,7 @@
 
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/mToolbar"
+        android:id="@+id/formularioToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="#03A9F4"
@@ -33,7 +33,7 @@
         android:src="@drawable/logoregiter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mToolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/formularioToolbar" />
 
     <EditText
         android:id="@+id/edit_text_nombre"
@@ -80,7 +80,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/lote"
+        android:id="@+id/edit_lote"
         android:layout_width="match_parent"
         android:layout_height="28dp"
         android:layout_marginEnd="35dp"
@@ -97,7 +97,7 @@
     <Button
         android:id="@+id/button_guardar_producto"
         android:layout_width="match_parent"
-        android:layout_height="27dp"
+        android:layout_height="30dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="35dp"
         android:layout_marginStart="35dp"
@@ -160,7 +160,7 @@
         android:layout_marginTop="8dp"
         android:text="Descripción"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lote" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_lote" />
 
     <EditText
         android:id="@+id/edit_text_descripcion"
