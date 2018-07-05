@@ -35,7 +35,7 @@ class ListaProductoAdapter : RecyclerView.Adapter<ListaProductoAdapter.ProductoV
         holder.nombreProducto.text = producto.nombre
         holder.precioproducto.text = "$/ "+producto.precio.toString()
         holder.itemView.setOnClickListener{
-            
+
 
         }
 
