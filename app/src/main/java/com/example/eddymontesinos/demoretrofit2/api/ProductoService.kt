@@ -8,7 +8,7 @@ interface ProductoService {
 
 
     @GET("productos")
-    fun obtenerProductos(): Call<ArrayList<Producto>>
+    fun obtenerProductos(@Query("buscar") buscarParam: String): Call<ArrayList<Producto>>
 
     @GET("productos/{idProducto}")
     fun obtenerProductoSegunId(@Path("idProducto") idProducto: Int): Call<Producto>

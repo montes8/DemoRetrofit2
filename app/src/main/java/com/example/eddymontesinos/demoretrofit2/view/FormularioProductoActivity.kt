@@ -52,6 +52,7 @@ class FormularioProductoActivity : AppCompatActivity() {
                         val guardarProducto = ProductoService.create().registrar(producto)
 
                         guardarProducto.enqueue(object : Callback<Void> {
+
                             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                                 toast("Producto Guardado")
                                 edit_text_nombre.setText("")
@@ -60,7 +61,6 @@ class FormularioProductoActivity : AppCompatActivity() {
                                 edit_stock.setText("")
                                 edit_text_descripcion.setText("")
                             }
-
                             override fun onFailure(call: Call<Void>, t: Throwable) {
                                 toast("Ocurrio un Error")
                             }
@@ -76,26 +76,25 @@ class FormularioProductoActivity : AppCompatActivity() {
             edit_text_descripcion.setText(prodcutoActualisar.descripcion)
             val idactulisar = prodcutoActualisar.id
 
-            button_guardar_producto.setOnClickListener{
+                    button_guardar_producto.setOnClickListener{
 
-                val nombreactulizar = edit_text_nombre.text.toString()
-                val precioactulaizar = edit_text_precio.text.toString().toDouble()
-                val loteactulizar = edit_lote.text.toString().toInt()
-                val stockactulizar = edit_stock.text.toString().toInt()
-                val descripcionactulizar = edit_text_descripcion.text.toString()
+                        val nombreactulizar = edit_text_nombre.text.toString()
+                        val precioactulaizar = edit_text_precio.text.toString().toDouble()
+                        val loteactulizar = edit_lote.text.toString().toInt()
+                        val stockactulizar = edit_stock.text.toString().toInt()
+                        val descripcionactulizar = edit_text_descripcion.text.toString()
 
-                val productoactulizado = Producto(0, nombreactulizar, precioactulaizar, loteactulizar, stockactulizar, descripcionactulizar)
-                val actulizarproducto = ProductoService.create().actualizar(idactulisar!!,productoactulizado)
-                actulizarproducto.enqueue(object :Callback<Void>{
-                    override fun onResponse(call: Call<Void>?, response: Response<Void>?) {
-                       toast("Producto Actulizado")
+                        val productoactulizado = Producto(0, nombreactulizar, precioactulaizar, loteactulizar, stockactulizar, descripcionactulizar)
+                        val actulizarproducto = ProductoService.create().actualizar(idactulisar!!,productoactulizado)
+                        actulizarproducto.enqueue(object :Callback<Void>{
+                            override fun onResponse(call: Call<Void>?, response: Response<Void>?) {
+                               toast("Producto Actulizado")
+                            }
+                            override fun onFailure(call: Call<Void>?, t: Throwable?) {
+                                toast("Ocurrio un Error")
+                            }
+                        })
                     }
-
-                    override fun onFailure(call: Call<Void>?, t: Throwable?) {
-                        toast("Ocurrio un Error")
-                    }
-                })
-            }
         }
     }
 }
