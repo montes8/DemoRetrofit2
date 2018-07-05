@@ -44,7 +44,7 @@
             android:id="@+id/buttonSub"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="UN NUEVO DEMO DB REMOTA"
+            android:text="UN NUEVO DEMO RETROFIT2"
             android:gravity="center"
             android:ems="10"
             android:textSize="20sp"
