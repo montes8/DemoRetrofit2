@@ -196,17 +196,21 @@
         android:gravity="center">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_actualizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="actualizar"
+        android:textColor="#03A9F4"
+        android:background="@drawable/button_style"
         android:ems="7"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_eliminar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="7"
+        android:textColor="#03A9F4"
+        android:background="@drawable/button_style"
         android:layout_marginLeft="30dp"
         android:text="eliminar" />
 

@@ -4,6 +4,8 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.example.eddymontesinos.demoretrofit2.R
@@ -30,29 +32,9 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
-    private fun ajusteToolbarHome() {
-        setSupportActionBar(homeToolbar)
-        title = "LISTA PRODUCTOS"
-    }
-
-    private fun recyclerViewHome(){
-
-        productoAdapter = ListaProductoAdapter()
-
-
-        productoAdapter?.onDetalleProductoClick ={
-
-            val intent = Intent(this@HomeActivity,DetalleProductoActivity::class.java)
-            intent.putExtra(DetalleProductoActivity.PRODUCTO_PARAM, it)
-            startActivity(intent)
-        }
-
-
-        my_recyclerview.layoutManager = LinearLayoutManager(this)
-        my_recyclerview.adapter = productoAdapter
-        //LLAMAMOS AL SERVICI WEB
-        val productoService = ProductoService.create()
-        val listaCallback = productoService.obtenerProductos()
+    override fun onResume() {
+        super.onResume()
+        val listaCallback = ProductoService.create().obtenerProductos()
         listaCallback.enqueue(object : Callback<ArrayList<Producto>>{
             override fun onResponse(call: Call<ArrayList<Producto>>?, response: Response<ArrayList<Producto>>?) {
                 if (response?.code() == 200) {
@@ -74,6 +56,47 @@ class HomeActivity : AppCompatActivity() {
                 Toast.makeText(this@HomeActivity, "Ocurrio un error al obtener la lista", Toast.LENGTH_SHORT).show()
             }
         })
+
+
+    }
+
+    private fun ajusteToolbarHome() {
+        setSupportActionBar(homeToolbar)
+        title = "LISTA PRODUCTOS"
+    }
+
+    private fun recyclerViewHome(){
+
+        productoAdapter = ListaProductoAdapter()
+
+
+        productoAdapter?.onDetalleProductoClick ={
+
+            val intent = Intent(this@HomeActivity,DetalleProductoActivity::class.java)
+            intent.putExtra(DetalleProductoActivity.PRODUCTO_PARAM, it)
+            startActivity(intent)
+        }
+
+        my_recyclerview.layoutManager = LinearLayoutManager(this)
+        my_recyclerview.adapter = productoAdapter
+
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+
+            R.id.option_agregar ->{
+                startActivity()
+            }
+
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 

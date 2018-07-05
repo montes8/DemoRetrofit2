@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.eddymontesinos.demoretrofit2">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.HomeActivity" />
-        <activity android:name=".view.DetalleProductoActivity"></activity>
+        <activity android:name=".view.DetalleProductoActivity" />
+        <activity android:name=".view.FormularioProductoActivity"></activity>
     </application>
 
 </manifest>

@@ -2,9 +2,15 @@ package com.example.eddymontesinos.demoretrofit2.view
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import com.example.eddymontesinos.demoretrofit2.R
+import com.example.eddymontesinos.demoretrofit2.api.ProductoService
 import com.example.eddymontesinos.demoretrofit2.model.Producto
 import kotlinx.android.synthetic.main.activity_detalle_producto.*
+import org.jetbrains.anko.toast
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class DetalleProductoActivity : AppCompatActivity() {
@@ -20,7 +26,41 @@ class DetalleProductoActivity : AppCompatActivity() {
 
         ajusteToolbarDetalle()
 
-       cargandoDetalleProducto()
+        val detallesProducto = intent.getParcelableExtra<Producto>(PRODUCTO_PARAM)
+        nombre_producto_detalle.text = detallesProducto.nombre
+        precio_producto_detalle.text = "$/ "+detallesProducto.precio.toString()
+        stock_detalle_producto.text = detallesProducto.stock.toString()
+        lote_producto_detalle.text = detallesProducto.lote.toString()
+        detalle_producto_detalle.text = detallesProducto.descripcion
+
+        button_eliminar.setOnClickListener{
+
+            val dialogBuilder = AlertDialog.Builder(this@DetalleProductoActivity)
+            dialogBuilder.setTitle("Eliminar")
+            dialogBuilder.setPositiveButton("SI",{dialog, which ->
+
+                val eliminarproductoCallback = ProductoService.create().eliminar(detallesProducto.id!!.toInt())
+                eliminarproductoCallback.enqueue(object :Callback<Producto>{
+                    override fun onResponse(call: Call<Producto>?, response: Response<Producto>?) {
+                        toast("Ocurrio Un Error al Eliminar prroducto")
+                    }
+
+                    override fun onFailure(call: Call<Producto>?, t: Throwable?) {
+
+                    }
+                })
+
+                toast("Producto Eliminado")
+                finish()
+            })
+
+            dialogBuilder.setNegativeButton("NO",{dialog, which ->
+                
+            })
+
+           dialogBuilder.show()
+
+        }
 
     }
 
@@ -34,12 +74,4 @@ class DetalleProductoActivity : AppCompatActivity() {
         }
     }
 
-    fun cargandoDetalleProducto(){
-        val detallesProducto = intent.getParcelableExtra<Producto>(PRODUCTO_PARAM)
-        nombre_producto_detalle.text = detallesProducto.nombre
-        precio_producto_detalle.text = "$/ "+detallesProducto.precio.toString()
-        stock_detalle_producto.text = detallesProducto.stock.toString()
-        lote_producto_detalle.text = detallesProducto.lote.toString()
-        detalle_producto_detalle.text = detallesProducto.descripcion
-    }
 }
