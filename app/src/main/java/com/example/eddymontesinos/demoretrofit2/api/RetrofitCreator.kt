@@ -1,4 +1,4 @@
-package com.example.eddymontesinos.demoretrofit2
+package com.example.eddymontesinos.demoretrofit2.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

@@ -1,10 +1,11 @@
-package com.example.eddymontesinos.demoretrofit2
+package com.example.eddymontesinos.demoretrofit2.view
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import com.example.eddymontesinos.demoretrofit2.R
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {
@@ -18,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
         val anima2 : Animation
 
         anima = AnimationUtils.loadAnimation(this, R.anim.ani_arriba)
-        anima2 = AnimationUtils.loadAnimation(this,R.anim.ani_abajo)
+        anima2 = AnimationUtils.loadAnimation(this, R.anim.ani_abajo)
         once.animation=anima
         doce.animation=anima2
 

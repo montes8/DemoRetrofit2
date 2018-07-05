@@ -1,7 +1,8 @@
-package com.example.eddymontesinos.demoretrofit2
+package com.example.eddymontesinos.demoretrofit2.view
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.eddymontesinos.demoretrofit2.R
 
 class HomeActivity : AppCompatActivity() {
 

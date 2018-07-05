@@ -1,4 +1,4 @@
-package com.example.eddymontesinos.demoretrofit2
+package com.example.eddymontesinos.demoretrofit2.api
 
 import com.example.eddymontesinos.demoretrofit2.model.Producto
 import retrofit2.Call
